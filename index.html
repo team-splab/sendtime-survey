@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>센드타임 도입하기</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="title">
+                <h1>센드타임 도입문의</h1>
+                <h2>민유 가지마~</h2>
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>회사명<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <input id="company" type="text" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="회사명을 적어주세요.">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>대표님 성함<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <input id="name" type="text" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="대표님 성함을 적어주세요.">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>이메일<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <input id="email" type="email" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="안내 메일을 받으실 수 있는 이메일 주소를 적어주세요.">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>연락처<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <input id="phone" type="number" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="휴대폰 번호를 적어주세요">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>목적<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-radio">
+                        <div class="form-radio-item">
+                            <label><input id="purpose" type="radio" name="purpose" value="business"
+                                    onclick="getRadioItem(event)" checked="checked"><span>사업적 고민 상담</span></label>
+                        </div>
+                        <div class="form-radio-item">
+                            <label><input id="purpose" type="radio" name="purpose" value="fund"
+                                    onclick="getRadioItem(event)"><span>투자 상담</span></label>
+                        </div>
+                        <div class="form-radio-item">
+                            <label><input id="purpose" type="radio" name="purpose" value="networking"
+                                    onclick="getRadioItem(event)"><span>네트워킹</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item" id="docu-item">
+                    <div class="form-title">
+                        <h3>회사 소개 자료<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <input id="docu" type="url" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="회사 소개 자료 다운로드 링크를 적어주세요.">
+                    </div>
+                </div>
+                <div class="form-item" id="business-theme-item">
+                    <div class="form-title">
+                        <h3>희망 주제<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input long">
+                        <textarea id="business-theme" class="long" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="현재 회사에서 겪고 있는 고민은 무엇인가요?&#13;&#10;나누고 싶은 안건을 구체적으로 작성해 주세요.💚&#13;&#10;&#13;&#10;ex. &#13;&#10;1. 채용 공고 작성&#13;&#10;2. 25명 미만 조직에서 챙겨야 할 인사 업무&#13;&#10;3. 조직 문화 만들기"></textarea>
+                    </div>
+                </div>
+                <div class="form-item" id="networking-theme-item">
+                    <div class="form-title">
+                        <h3>희망 주제<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <textarea id="networking-theme" class="long" onkeydown="inputCheck()" onblur="inputCheck()"
+                            placeholder="멘토님께 어떤 분의 소개를 부탁하고 싶으신가요? &#13;&#10;혹은 소개 받고 싶은 이유는 무엇인가요? &#13;&#10;멘토님께 사전에 전달하고 싶은 내용은 무엇인가요?"></textarea>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>개인정보 동의<span class="star">*</span></h3>
+                    </div>
+                    <div class="info">
+                        아산나눔재단은 수집한 개인정보를 개인정보 제공자가 동의한 내용 외 다른 목적으로 활용하지 않으며, 개인정보 제공자가 제공된 개인정보를 변경하고자 할 때에는 개인정보
+                        관리책임자를 통해 열람, 정정을 요구할 수
+                        있습니다. 동의하지 않을 시 충분한 정보 없이 심사가 진행될 수 있습니다.
+
+                        개인정보 수집 및 이용 목적 : 수집된 개인 정보는 아산나눔재단에서 진행하는 마루커넥트 운영을 위해서만 사용되며 수집 목적외에 어떠한 용도로도 사용되지 않습니다.
+
+                        이용할 개인정보 항목 : 성명, 기업명, 직함, 이메일, 연락처, 회사 설립일, 회사 소개 자료
+
+                        개인정보 이용 및 보유 기간 : 수집된 개인 정보(고유식별번호 포함)는 마루커넥트 운영을 위한 정보 공유, 안내 메일/문자 발송 등을 위해서만 사용되며 수집 목적으로
+                        활용되며 보유기간 이후 파기하는 것을 원칙으로
+                        합니다.
+
+                        ㆍ 이용 및 보유 기간 : 수집 및 이용 동의일로부터 5년까지
+                        ㆍ 개인정보 삭제 요청 시 maru180@asan-nanum.org로 연락
+                        ㆍ 수집된 개인정보는 본 프로그램 운영을 위해 본인이 신청한 멘토에게만 공유됩니다.
+                    </div>
+                    <div class="form-radio">
+                        <div class="form-radio-item">
+                            <label><input id="private" type="radio" name="yes" value="yes" checked="checked"
+                                    onclick="getPrivateItem(event)" checked="checked"><span>네</span></label>
+                        </div>
+                        <div class="form-radio-item">
+                            <label><input id="private" type="radio" name="yes" value="no"
+                                    onclick="getPrivateItem(event)"><span>아니오</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit" id="submit-disabled">
+                    <button id="submit-button" class="disabled" type="button">제출하기</button>
+                </div>
+                <div class="submit" id="submit-abled">
+                    <button id="submit-button-abled" class="abled" type="button">제출하기</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <img src="/splab-logo.png" alt="">
+        </div>
+    </div>
+    <div class="loadingPopup">
+        <div class="spinner"></div>
+    </div>
+    <script src="scriptForSedntimeStartSurvey.js"></script>
+</body>
+
+</html>
